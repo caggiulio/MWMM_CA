@@ -8,13 +8,6 @@
 import Foundation
 import Combine
 
-import Foundation
-
-protocol BeerViewModelPresentationLogic: AnyObject {
-    func presentSuccess(values: [Beer])
-    func presentFailure(error: Error)
-}
-
 class BeerViewModel {
     
     // MARK: - Business logic properties
@@ -31,13 +24,11 @@ class BeerViewModel {
     
     private let beerRepository: BeerRepository
     
+    
     init(beerRepository: BeerRepository) {
         self.beerRepository = beerRepository
         fetchBeerUseCase = FetchBeerUseCase(beerRepository: beerRepository)
         filteredBeerUseCase = BeersFilteredUseCase(beerRepository: beerRepository)
-        
-        fetchBeerUseCase.presentationLayer = self
-        filteredBeerUseCase.presentationLayer = self
     }
     
     // MARK: - Internal methods
@@ -46,12 +37,35 @@ class BeerViewModel {
         state.loadingState = .loading
      
         fetchBeerUseCase.execute(page: page)
+            .sink { completion in
+                switch completion {
+                
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state.loadingState = .failure(error)
+                }
+            } receiveValue: { (beers) in
+                self.state.loadingState = .success(beers)
+            }.store(in: &cancellables)
+
     }
     
     func loadFilteredBeers(filter: String) {
         state.loadingState = .loading
      
         filteredBeerUseCase.execute(filter: filter)
+            .sink { completion in
+                switch completion {
+                
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state.loadingState = .failure(error)
+                }
+            } receiveValue: { (beers) in
+                self.state.loadingState = .success(beers)
+            }.store(in: &cancellables)
     }
 
 }
@@ -64,16 +78,4 @@ extension BeerViewModel {
         @Published var loadingState: BeersLoadingState = .idle
     }
     
-}
-
-// MARK: - Presentation Logic
-
-extension BeerViewModel: BeerViewModelPresentationLogic {
-    func presentSuccess(values: [Beer]) {
-        self.state.loadingState = .success(values)
-    }
-    
-    func presentFailure(error: Error) {
-        self.state.loadingState = .failure(error)
-    }
 }

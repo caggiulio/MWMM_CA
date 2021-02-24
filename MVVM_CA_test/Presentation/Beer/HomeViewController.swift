@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
             self.loadBeers(page: 1)
         }
         
-        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.loadBeers(page: 2)
         }
         
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             self.loadFilteredBeers(filter: "Ale")
-        }*/
+        }
     }
     
     // MARK: - Configure methods

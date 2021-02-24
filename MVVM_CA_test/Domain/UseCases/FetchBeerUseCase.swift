@@ -9,31 +9,32 @@ import Foundation
 import Combine
 
 protocol FetchBeerUseCaseProtocol {
-    func execute(page: Int)
+    func execute(page: Int) -> AnyPublisher<[Beer], Error>
 }
 
 class FetchBeerUseCase: FetchBeerUseCaseProtocol {
     
     private let beerRepository: BeerRepository
     private var cancellables: Set<AnyCancellable> = []
-    weak var presentationLayer: BeerViewModelPresentationLogic?
         
     init(beerRepository: BeerRepository) {
         self.beerRepository = beerRepository
     }
     
-    func execute(page: Int) {
-        beerRepository.fetchBeers(page: page)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.presentationLayer?.presentFailure(error: error)
-                }
-            }, receiveValue: { beers in
-                self.presentationLayer?.presentSuccess(values: beers)
-            }).store(in: &cancellables)
+    func execute(page: Int) -> AnyPublisher<[Beer], Error> {
+        return Future { promise in
+            self.beerRepository.fetchBeers(page: page)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                }, receiveValue: { beers in
+                    promise(.success(beers))
+                }).store(in: &self.cancellables)
+        }.eraseToAnyPublisher()
     }    
 }
