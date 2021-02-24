@@ -10,21 +10,9 @@ import Networking
 
 struct NetworkingManager {
     
-    // MARK: - Internal properties
-    
-    let post: PostWorkerProtocol = {
-        let networking = Networking(
-            baseURL: Constants.baseURLPosts,
-            interceptor: NetworkingInterceptor()
-        )
-        // networking.logLevel = .none
-        return PostWorker(networking: networking)
-    }()
-    
     let beer: BeersWorkerProtocol = {
         let networking = Networking(
-            baseURL: Constants.baseURLBeers,
-            interceptor: NetworkingInterceptor()
+            baseURL: Constants.baseURLBeers
         )
         // networking.logLevel = .none
         return BeerWorker(networking: networking)

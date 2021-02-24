@@ -23,8 +23,8 @@ class BeerWorker: BeersWorkerProtocol {
     
     // MARK: - Protocol methods
 
-    func getBeers() -> AnyPublisher<[Beer], Error> {
-        let path = ("/beers", [URLQueryItem.init(name: "page", value: "1"), URLQueryItem.init(name: "per_page", value: "25")])
+    func getBeers(page: Int) -> AnyPublisher<[Beer], Error> {
+        let path = ("/beers", [URLQueryItem.init(name: "page", value: "\(page)"), URLQueryItem.init(name: "per_page", value: "25")])
         let request = NetworkingRequest(method: .get, path: path)
         return networking.send(request: request)
     }

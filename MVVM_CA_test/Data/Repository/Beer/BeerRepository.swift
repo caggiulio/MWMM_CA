@@ -8,7 +8,7 @@
 import Networking
 import Combine
 
-protocol BeerRepoProtocol {
+protocol BeerRepositoryProtocol {
     func fetchBeers(page: Int?) -> AnyPublisher<[Beer], Error>
 }
 
@@ -16,16 +16,15 @@ protocol BeerDataToStore {
     var fetchedBeers: [Beer] { get }
 }
 
-class BeerRepo: BeerRepoProtocol, BeerDataToStore {
+class BeerRepository: BeerRepositoryProtocol, BeerDataToStore, ObservableObject {
     
     private var worker: BeersWorkerProtocol = Manager.networking.beer
     private var cancellables: Set<AnyCancellable> = []
     
-    var fetchedBeers: [Beer] = [Beer]()
+    @Published var fetchedBeers: [Beer] = [Beer]()
         
     func fetchBeers(page: Int? = nil) -> AnyPublisher<[Beer], Error> {
         return Future { promise in
-            
             self.worker.getBeers(page: page ?? 1)
             .sink { completion in
                 switch completion {

@@ -12,32 +12,26 @@ protocol BeersFilteredUseCaseProtocol {
     func execute(filter: String)
 }
 
+/// In this use case i would filters the fetched beers. If there aren't fetched beers, call the API to fetch them
 class BeersFilteredUseCase: BeersFilteredUseCaseProtocol {
     
-    var beerRepo: BeerRepo?
+    private let beerRepository: BeerRepository
     private var cancellables: Set<AnyCancellable> = []
-    var presentationLayer: BeerViewModelPresentationLogic?
+    weak var presentationLayer: BeerViewModelPresentationLogic?
     
     var filter: String?
     
-    init(beerRepo: BeerRepo, presentationLayer: BeerViewModelPresentationLogic) {
-        self.beerRepo = beerRepo
-        self.presentationLayer = presentationLayer
+    init(beerRepository: BeerRepository) {
+        self.beerRepository = beerRepository
     }
     
     func execute(filter: String) {
-        beerRepo?.fetchBeers()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.presentationLayer?.presentError(error: error)
-                }
-            }, receiveValue: { beers in
-                self.getFilteredBeers(beers: beers, filter: filter)
-            }).store(in: &cancellables)
+        guard !beerRepository.fetchedBeers.isEmpty else {
+            self.presentationLayer?.presentFailure(error: NSError(domain: "No data Fetched", code: 0, userInfo: nil))
+            return
+        }
+        
+        getFilteredBeers(beers: beerRepository.fetchedBeers, filter: filter)
     }
     
     private func getFilteredBeers(beers: [Beer], filter: String) {
@@ -45,7 +39,7 @@ class BeersFilteredUseCase: BeersFilteredUseCaseProtocol {
             return (beer.name?.contains(filter) ?? false)
         })
         
-        presentationLayer?.presentBeers(beers: filteredBeers)
+        presentationLayer?.presentSuccess(beers: filteredBeers)
     }
     
 }

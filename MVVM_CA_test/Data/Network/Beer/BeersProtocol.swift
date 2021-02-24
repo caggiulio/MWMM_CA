@@ -12,6 +12,5 @@ import Networking
 protocol BeersWorkerProtocol {
     var networking: NetworkingProtocol { get }
 
-    @available(iOS 13.0, *)
-    func getBeers() -> AnyPublisher<[Beer], Swift.Error>
+    func getBeers(page: Int) -> AnyPublisher<[Beer], Swift.Error>
 }
