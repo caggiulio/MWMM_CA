@@ -16,12 +16,12 @@ protocol BeerDataToStore {
     var fetchedBeers: [Beer] { get }
 }
 
-class BeerRepository: BeerRepositoryProtocol, BeerDataToStore, ObservableObject {
+class BeerRepository: BeerRepositoryProtocol, BeerDataToStore {
     
     private var worker: BeersWorkerProtocol = Manager.networking.beer
     private var cancellables: Set<AnyCancellable> = []
     
-    @Published var fetchedBeers: [Beer] = [Beer]()
+    var fetchedBeers: [Beer] = [Beer]()
         
     func fetchBeers(page: Int? = nil) -> AnyPublisher<[Beer], Error> {
         return Future { promise in
