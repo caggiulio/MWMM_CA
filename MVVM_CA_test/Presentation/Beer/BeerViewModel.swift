@@ -11,7 +11,7 @@ import Combine
 import Foundation
 
 protocol BeerViewModelPresentationLogic: AnyObject {
-    func presentSuccess(beers: [Beer])
+    func presentSuccess(values: [Beer])
     func presentFailure(error: Error)
 }
 
@@ -30,7 +30,6 @@ class BeerViewModel {
     private let filteredBeerUseCase: BeersFilteredUseCase
     
     private let beerRepository: BeerRepository
-    //private var beers: AnyCancellable?
     
     init(beerRepository: BeerRepository) {
         self.beerRepository = beerRepository
@@ -39,11 +38,6 @@ class BeerViewModel {
         
         fetchBeerUseCase.presentationLayer = self
         filteredBeerUseCase.presentationLayer = self
-        
-        /*self.beers = beerRepository.$fetchedBeers
-            .sink(receiveValue: { (beers) in
-                self.state.loadingState = .success(beers)
-            })*/
     }
     
     // MARK: - Internal methods
@@ -72,9 +66,11 @@ extension BeerViewModel {
     
 }
 
+// MARK: - Presentation Logic
+
 extension BeerViewModel: BeerViewModelPresentationLogic {
-    func presentSuccess(beers: [Beer]) {
-        self.state.loadingState = .success(beers)
+    func presentSuccess(values: [Beer]) {
+        self.state.loadingState = .success(values)
     }
     
     func presentFailure(error: Error) {

@@ -12,11 +12,7 @@ protocol BeerRepositoryProtocol {
     func fetchBeers(page: Int?) -> AnyPublisher<[Beer], Error>
 }
 
-protocol BeerDataToStore {
-    var fetchedBeers: [Beer] { get }
-}
-
-class BeerRepository: BeerRepositoryProtocol, BeerDataToStore {
+class BeerRepository: BeerRepositoryProtocol {
     
     private var worker: BeersWorkerProtocol = Manager.networking.beer
     private var cancellables: Set<AnyCancellable> = []

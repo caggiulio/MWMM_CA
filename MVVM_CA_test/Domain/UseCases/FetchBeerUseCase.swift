@@ -33,7 +33,7 @@ class FetchBeerUseCase: FetchBeerUseCaseProtocol {
                     self.presentationLayer?.presentFailure(error: error)
                 }
             }, receiveValue: { beers in
-                self.presentationLayer?.presentSuccess(beers: beers)
+                self.presentationLayer?.presentSuccess(values: beers)
             }).store(in: &cancellables)
     }    
 }

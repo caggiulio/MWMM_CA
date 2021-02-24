@@ -39,7 +39,7 @@ class BeersFilteredUseCase: BeersFilteredUseCaseProtocol {
             return (beer.name?.contains(filter) ?? false)
         })
         
-        presentationLayer?.presentSuccess(beers: filteredBeers)
+        presentationLayer?.presentSuccess(values: filteredBeers)
     }
     
 }

@@ -11,6 +11,8 @@
 		4D0A65B925E52EDC001F434A /* BeersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65B725E52EDC001F434A /* BeersProtocol.swift */; };
 		4D0A65BA25E52EDC001F434A /* BeerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65B825E52EDC001F434A /* BeerWorker.swift */; };
 		4D0A65BF25E537DB001F434A /* BeersFilteredUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65BE25E537DB001F434A /* BeersFilteredUseCase.swift */; };
+		4D97BA3625E6AEE8007C32A7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97BA3525E6AEE8007C32A7 /* Router.swift */; };
+		4D97BA4F25E6B20D007C32A7 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97BA4E25E6B20D007C32A7 /* HomeRouter.swift */; };
 		4DE7EBDA25E4FE7600DE1122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7EBD925E4FE7600DE1122 /* AppDelegate.swift */; };
 		4DE7EBDC25E4FE7600DE1122 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7EBDB25E4FE7600DE1122 /* SceneDelegate.swift */; };
 		4DE7EBDE25E4FE7600DE1122 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7EBDD25E4FE7600DE1122 /* HomeViewController.swift */; };
@@ -66,6 +68,8 @@
 		4D0A65B725E52EDC001F434A /* BeersProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeersProtocol.swift; sourceTree = "<group>"; };
 		4D0A65B825E52EDC001F434A /* BeerWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerWorker.swift; sourceTree = "<group>"; };
 		4D0A65BE25E537DB001F434A /* BeersFilteredUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersFilteredUseCase.swift; sourceTree = "<group>"; };
+		4D97BA3525E6AEE8007C32A7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4D97BA4E25E6B20D007C32A7 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		4DE7EBD625E4FE7600DE1122 /* MVVM_CA_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_CA_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE7EBD925E4FE7600DE1122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DE7EBDB25E4FE7600DE1122 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		4DE7EC0D25E4FEBA00DE1122 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4D97BA3525E6AEE8007C32A7 /* Router.swift */,
 				4DE7ECD525E503C900DE1122 /* Beer */,
 			);
 			path = Presentation;
@@ -324,6 +329,7 @@
 			children = (
 				4DE7EBDD25E4FE7600DE1122 /* HomeViewController.swift */,
 				4DE7ECDF25E5045E00DE1122 /* BeerViewModel.swift */,
+				4D97BA4E25E6B20D007C32A7 /* HomeRouter.swift */,
 			);
 			path = Beer;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				4DE7EBDE25E4FE7600DE1122 /* HomeViewController.swift in Sources */,
 				4DE7ECC625E5038200DE1122 /* Temp.swift in Sources */,
 				4DE7ECBF25E5038200DE1122 /* Volume.swift in Sources */,
+				4D97BA3625E6AEE8007C32A7 /* Router.swift in Sources */,
 				4DE7ECC225E5038200DE1122 /* Method.swift in Sources */,
 				4D0A65B925E52EDC001F434A /* BeersProtocol.swift in Sources */,
 				4DE7ECA825E5030E00DE1122 /* Config.swift in Sources */,
@@ -617,6 +624,7 @@
 				4DE7EC1825E4FF1C00DE1122 /* NetworkingManager.swift in Sources */,
 				4DE7ECCA25E5038200DE1122 /* Ingredients.swift in Sources */,
 				4DE7ECE625E504C000DE1122 /* FetchBeerUseCase.swift in Sources */,
+				4D97BA4F25E6B20D007C32A7 /* HomeRouter.swift in Sources */,
 				4DE7ECC025E5038200DE1122 /* Hops.swift in Sources */,
 				4DE7ECF125E5065C00DE1122 /* BeerRepository.swift in Sources */,
 				4DE7ECC425E5038200DE1122 /* HomeSectionEntry.swift in Sources */,

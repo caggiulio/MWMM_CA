@@ -14,11 +14,13 @@ class HomeViewController: UIViewController {
     
     private var cancellables: Set<AnyCancellable> = []
     private let viewModel: BeerViewModel
+    private let router: RouterProtocol
     
     // MARK: - Object lifecycle
     
     init(viewModel: BeerViewModel) {
         self.viewModel = viewModel
+        self.router = HomeRouter()
         super.init(nibName: nil, bundle: nil)
     }
     
