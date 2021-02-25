@@ -11,6 +11,7 @@
 		4D0A65B925E52EDC001F434A /* BeersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65B725E52EDC001F434A /* BeersProtocol.swift */; };
 		4D0A65BA25E52EDC001F434A /* BeerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65B825E52EDC001F434A /* BeerWorker.swift */; };
 		4D0A65BF25E537DB001F434A /* BeersFilteredUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A65BE25E537DB001F434A /* BeersFilteredUseCase.swift */; };
+		4D2C137925E7891D00A256C6 /* HomeAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C137825E7891D00A256C6 /* HomeAssembler.swift */; };
 		4D97BA3625E6AEE8007C32A7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97BA3525E6AEE8007C32A7 /* Router.swift */; };
 		4D97BA4F25E6B20D007C32A7 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97BA4E25E6B20D007C32A7 /* HomeRouter.swift */; };
 		4DE7EBDA25E4FE7600DE1122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7EBD925E4FE7600DE1122 /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 		4D0A65B725E52EDC001F434A /* BeersProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeersProtocol.swift; sourceTree = "<group>"; };
 		4D0A65B825E52EDC001F434A /* BeerWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerWorker.swift; sourceTree = "<group>"; };
 		4D0A65BE25E537DB001F434A /* BeersFilteredUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersFilteredUseCase.swift; sourceTree = "<group>"; };
+		4D2C137825E7891D00A256C6 /* HomeAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeAssembler.swift; path = MVVM_CA_test/HomeAssembler.swift; sourceTree = SOURCE_ROOT; };
 		4D97BA3525E6AEE8007C32A7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4D97BA4E25E6B20D007C32A7 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		4DE7EBD625E4FE7600DE1122 /* MVVM_CA_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_CA_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,14 @@
 			path = Beer;
 			sourceTree = "<group>";
 		};
+		4D2C137725E7890A00A256C6 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				4D2C137825E7891D00A256C6 /* HomeAssembler.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 		4DE7EBCD25E4FE7500DE1122 = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +230,7 @@
 		4DE7EC0D25E4FEBA00DE1122 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4D2C137725E7890A00A256C6 /* Assembler */,
 				4D97BA3525E6AEE8007C32A7 /* Router.swift */,
 				4DE7ECD525E503C900DE1122 /* Beer */,
 			);
@@ -605,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE7ECE025E5045E00DE1122 /* BeerViewModel.swift in Sources */,
+				4D2C137925E7891D00A256C6 /* HomeAssembler.swift in Sources */,
 				4D0A65BA25E52EDC001F434A /* BeerWorker.swift in Sources */,
 				4DE7ECC125E5038200DE1122 /* Mash_temp.swift in Sources */,
 				4DE7EC1E25E4FF3A00DE1122 /* LoadingState.swift in Sources */,

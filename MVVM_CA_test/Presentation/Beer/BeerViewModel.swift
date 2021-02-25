@@ -22,13 +22,9 @@ class BeerViewModel {
     private let fetchBeerUseCase: FetchBeerUseCase
     private let filteredBeerUseCase: BeersFilteredUseCase
     
-    private let beerRepository: BeerRepository
-    
-    
-    init(beerRepository: BeerRepository) {
-        self.beerRepository = beerRepository
-        fetchBeerUseCase = FetchBeerUseCase(beerRepository: beerRepository)
-        filteredBeerUseCase = BeersFilteredUseCase(beerRepository: beerRepository)
+    init(fetchBeerUseCase: FetchBeerUseCase, filteredBeerUseCase: BeersFilteredUseCase) {
+        self.fetchBeerUseCase = fetchBeerUseCase
+        self.filteredBeerUseCase = filteredBeerUseCase
     }
     
     // MARK: - Internal methods
