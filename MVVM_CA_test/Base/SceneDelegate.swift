@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MVVM_Framework
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         if let windowScene = scene as? UIWindowScene {
             window = UIWindow(windowScene: windowScene)
-            let home: HomeViewController = HomeAssembler().resolve(beerRepository: BeerRepository())
+            let home: HomeViewController = HomeAssembler().resolve(beerRepository: BeerRepository(worker: Manager.networking.beer))
             
             window?.rootViewController = home
             window?.makeKeyAndVisible()

@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import MVVM_Networking
 
-enum Manager {
+public enum Manager {
     static let networking = NetworkingManager()
 }

@@ -5,8 +5,8 @@
 //  Created by Nunzio Giulio Caggegi on 23/02/21.
 //
 
-import Foundation
 import Combine
+import MVVM_Framework
 
 class BeerViewModel {
     

@@ -6,7 +6,9 @@ target 'MVVM_CA_test' do
   use_frameworks!
 
   # Pods for MVVM_CA_test
-  pod 'Networking', :path => '/Users/nunziogiuliocaggegi/Developer/Networking-iOS' 
+  pod 'Networking', :path => '/Users/nunziogiuliocaggegi/Developer/Networking-iOS'
+  pod 'MVVM_Framework', :path => '/Users/nunziogiuliocaggegi/Developer/MVVM_Framework'
+  pod 'MVVM_Networking', :path => '/Users/nunziogiuliocaggegi/Developer/MVVM_Networking'
   target 'MVVM_CA_testTests' do
     inherit! :search_paths
     # Pods for testing

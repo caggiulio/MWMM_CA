@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MVVM_Framework
 
 class HomeAssembler: HomeAssemblerInjector { }
 
